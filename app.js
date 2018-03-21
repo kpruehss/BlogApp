@@ -1,8 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-
-app = express();
+const app = express();
 
 // ----APP CONFIGURATION----
 
@@ -17,16 +16,34 @@ app.set('port', process.env.PORT || 3000);
 mongoose.connect('mongodb://localhost/restful_blog_app');
 
 // ----MONGOOSE/MODEL CONFIG----
-let blogSchema = new mongoose.Schema({
+const blogSchema = new mongoose.Schema({
   title: String,
   image: String,
   body: String,
   created: {type: Date, default: Date.now},
 });
 
-let Blog = mongoose.model('Blog', blogSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 
 // ----RESTFUL ROUTES----
+app.get('/', (req, res) => {
+  res.redirect('/blogs');
+});
+
+app
+  .route('/blogs')
+  .get((req, res) => {
+    Blog.find({}, (err, blogs) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('index', {blogs: blogs});
+      }
+    });
+  })
+  .post((req, res) => {
+    res.redirect('index');
+  });
 
 // Server port listen
 app.listen(app.get('port'), () => {
