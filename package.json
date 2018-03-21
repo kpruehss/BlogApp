@@ -1,0 +1,28 @@
+{
+  "name": "restfulblogapp",
+  "version": "1.0.0",
+  "description": "A simple blog to practice RESTful routing with NodeJS, Express, MongoDB and SemanticUI",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpruehss/RESTfulBlogApp.git"
+  },
+  "author": "Karsten Pruehss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kpruehss/RESTfulBlogApp/issues"
+  },
+  "homepage": "https://github.com/kpruehss/RESTfulBlogApp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-google": "^0.9.1"
+  }
+}
