@@ -1,0 +1,16 @@
+extends partials/boilerplate
+
+block content
+  .ui.main.text.container.segment
+    .ui.huge.header Edit #{blog.title}
+    form(class="ui form", action="/blogs/" + blog._id + "?_method=PUT", method="post")
+      .field
+        label Title
+        input(type="text", name="blog[title]", placeholder="title", value=blog.title)
+      .field
+        label Image
+        input(type="text", name="blog[image]", placeholder="image", value=blog.image)
+      .field
+        label Blog Post
+        textarea(name="blog[body]", cols="30", rows="10") #{blog.body}
+      input(class="ui violet big basic button", type="submit")

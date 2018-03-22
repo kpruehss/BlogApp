@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    title RESTful Blog
+  body
+    .ui.fixed.inverted.menu
+      .ui.container
+        .header.item #[i.code.icon] Blog Site
+        a(href="/" class="item") Home
+        a(href="/blogs/new" class="item") New Post
+
+
+    block content
+    br
+    hr
+
+    footer#footer
+      p Copyright Karsten Pruehss 2018

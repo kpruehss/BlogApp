@@ -1,7 +1,12 @@
-h1 INDEX PAGE
+extends partials/boilerplate
+
+block content
 
   each blog in blogs
     div
       h2=blog.title
+
       img(src=blog.image, alt="Image Missing")
-      //- span=blog.created
+      span #{blog.created}
+      p #{blog.body.substring(0, 100)}...
+      a(href="/blogs/" + blog._id) Read More

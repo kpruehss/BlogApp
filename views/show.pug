@@ -1,0 +1,15 @@
+extends partials/boilerplate
+
+block content
+  .ui.main.text.container.segment
+    .ui.huge.header=blog.title
+    .ui.top.attached
+      .item
+        img(class="ui centered rounded image" ,src=blog.image, alt="Image Missing")
+        .content
+          span=blog.created.toDateString()
+        .description
+          p!=blog.body
+        a(class="ui orange basic button" ,href="/blogs/" + blog._id + "/edit")|Edit
+        form(action="/blogs/" + blog._id + "?_method=DELETE", method="post", id="delete")
+          button.ui.red.basic.button Delete
