@@ -1,12 +1,20 @@
 extends partials/boilerplate
 
 block content
-
-  each blog in blogs
-    div
-      h2=blog.title
-
-      img(src=blog.image, alt="Image Missing")
-      span #{blog.created}
-      p #{blog.body.substring(0, 100)}...
-      a(href="/blogs/" + blog._id) Read More
+  .ui.main.text.container
+    .ui.huge.header RESTful Blog App
+    .ui.top.attached.segment
+      .ui.divided.items
+        each blog in blogs
+          .item
+            .image
+              img(src=blog.image, alt="Image Missing")
+            .content
+              a(class="header" ,href="/blogs/" + blog._id)|#{blog.title}
+              .meta
+                span #{blog.created.toDateString()}
+              .description
+                p!=blog.body.substring(0, 100) + '...'
+              .extra
+                a(class="ui floated basic violet button" ,href="/blogs/" + blog._id)|Read More
+                  i.right.chevron.icon

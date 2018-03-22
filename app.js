@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const expressSanitizer = require('express-sanitizer');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const app = express();
@@ -13,6 +14,8 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 // Assign methodOverride
 app.use(methodOverride('_method'));
+// Assign expressSanitizer
+app.use(expressSanitizer());
 // Port settings
 app.set('port', process.env.PORT || 3000);
 // Mongoose
@@ -45,8 +48,10 @@ app
       }
     });
   })
+  // Create Route
   .post((req, res) => {
     // create blog object
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.create(req.body.blog, (err, newBlog) => {
       if (err) {
         res.render('new');
@@ -73,7 +78,9 @@ app
       }
     });
   })
+  // Update Route
   .put((req, res) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
       if (err) {
         res.redirect('/blogs');
